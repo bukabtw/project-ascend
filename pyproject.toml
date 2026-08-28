@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ascend"
+version = "0.1.0"
+description = "Ascend — система персонального ИИ-тренера и геймификации здоровья"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Ascend Team" }]
+keywords = ["fitness", "rpg", "health", "gamification", "trainer"]
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+    "bcrypt>=4.0",
+]
+
+[project.optional-dependencies]
+telegram = [
+    "aiogram>=3.7",
+]
+desktop = [
+    "PyQt6>=6.6",
+    "matplotlib>=3.8",
+    "pyqtgraph>=0.13",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.3",
+    "black>=24.0",
+    "mypy>=1.8",
+    "pre-commit>=3.6",
+]
+
+[project.scripts]
+ascend-api = "app.main:run"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+include = ["app*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+# RUF001/RUF002/RUF003 не применяем: документация и комментарии проекта
+# осознанно написаны на русском языке.
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.mypy]
+python_version = "3.10"
+plugins = ["pydantic.mypy"]
+ignore_missing_imports = true

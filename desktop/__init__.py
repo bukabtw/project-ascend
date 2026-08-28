@@ -1,0 +1,1 @@
+"""Desktop-клиент Ascend (PyQt6). Реализуется в Sprint 7."""

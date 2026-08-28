@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Тесты и инструменты
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+node_modules/
+
+# Базы данных (локальные данные не храним в git)
+*.db
+*.sqlite
+*.sqlite3
+
+# Локальные конфигурации и секреты
+.env
+.env.local
+
+# Данные приложения
+data/
+logs/
+exports/*
+backups/*
+!exports/.gitkeep
+!backups/.gitkeep
+
+# OS
+Thumbs.db
+.DS_Store

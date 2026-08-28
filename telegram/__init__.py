@@ -1,0 +1,1 @@
+"""Telegram-бот Ascend (aiogram 3.x). Реализуется в Sprint 8."""
