@@ -56,13 +56,14 @@ pythonpath = ["backend"]
 [tool.ruff]
 target-version = "py310"
 line-length = 100
-extend-exclude = ["migrations"]
+extend-exclude = ["migrations/versions"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
 # RUF001/RUF002/RUF003 не применяем: документация и комментарии проекта
 # осознанно написаны на русском языке.
-ignore = ["RUF001", "RUF002", "RUF003"]
+# B008 не применяем: Depends() в аргументах — стандартный паттерн FastAPI.
+ignore = ["RUF001", "RUF002", "RUF003", "B008"]
 
 [tool.black]
 line-length = 100
